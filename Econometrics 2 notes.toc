@@ -1,0 +1,11 @@
+\contentsline {section}{\numberline {1}Review of Asymptotic Theory}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Basic Setup}{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Modes of Convergence}{2}{subsection.1.2}
+\contentsline {subsubsection}{\numberline {1.2.1}Covergence in Probability}{2}{subsubsection.1.2.1}
+\contentsline {subsubsection}{\numberline {1.2.2}Convergence in Distribution}{3}{subsubsection.1.2.2}
+\contentsline {subsubsection}{\numberline {1.2.3}Sufficient Conditions for Joint Weak Convergence}{5}{subsubsection.1.2.3}
+\contentsline {subsection}{\numberline {1.3}Continuous Mapping Theorem and Delta Method}{6}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.4}Stochastic Orders}{7}{subsection.1.4}
+\contentsline {subsection}{\numberline {1.5}Inequalities\FN@sf@gobble@opt {In this subsection I restate a number of useful equalities and their proofs from Hansen's textbook. You don't have to know the proofs unless you are interested in.}}{9}{subsection.1.5}
+\contentsline {section}{\numberline {2}Instrumental Variable}{12}{section.2}
+\contentsline {section}{References}{13}{section*.11}

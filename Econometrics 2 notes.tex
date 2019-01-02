@@ -1,0 +1,735 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage{indentfirst}
+\usepackage{geometry} % to change the page dimensions
+\geometry{letterpaper, left=25mm, right=25mm, top=25mm, bottom=25mm}
+\usepackage[pdftex]{graphicx} % support the \includegraphics command and options
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{multirow}
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+\usepackage{epsfig}
+\usepackage{pdflscape}
+\usepackage{longtable}
+%\usepackage[pdftex]{graphicx}
+
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{plain} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+\usepackage{kotex}
+\usepackage[overload]{empheq}
+\usepackage{amsthm, amssymb, amsmath, amsfonts, amsxtra}
+\usepackage{color}
+\usepackage[stable]{footmisc}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+\usepackage{mathrsfs}
+\usepackage{mdframed}
+\usepackage{float}
+
+%% For fancy fonts
+%\usepackage[lf]{Baskervaldx} % lining figures
+%\usepackage[bigdelims,vvarbb]{newtxmath} % math italic letters from Nimbus Roman
+%\usepackage[cal=boondoxo]{mathalfa} % mathcal from STIX, unslanted a bit
+
+\usepackage{bm}
+\usepackage{bbm}
+%% Times new roman 
+%\usepackage{newtxtext,newtxmath}
+
+
+%% Spacing
+\usepackage{setspace}
+
+%% HREF
+\usepackage[unicode=true, pdfusetitle,
+bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
+{hyperref}
+\hypersetup{
+	colorlinks = true,
+	urlcolor = blue,
+	linkcolor = red,
+	citecolor = blue,
+	%  pdfauthor = {\name},
+	%  pdfkeywords = {economics, econometrics,
+	% industrial organization,
+	%    applied microeconomics},
+	%  pdftitle = {\name: Curriculum Vitae},
+	%  pdfsubject = {Curriculum Vitae},
+	%  pdfpagemode = UseNone
+}
+
+%% TIKZ for figure drawing
+\usepackage{tikz}
+
+%% BIBTEX
+\usepackage{natbib}
+\usepackage{authblk}
+
+%% EPS figure
+\usepackage{epstopdf}
+
+%% Import package
+\usepackage{import}
+
+%Here I define some theorem styles and shortcut commands for symbols I use often
+\theoremstyle{definition}
+
+\newmdtheoremenv{defn}{Definition}
+\numberwithin{defn}{subsection}
+\newmdtheoremenv{thm}{Theorem}
+\numberwithin{thm}{subsection}
+\newmdtheoremenv{coro}[thm]{Corollary}
+\newmdtheoremenv{claim}[thm]{Claim}
+\newtheorem*{claim*}{Claim}
+\newtheorem*{summ}{Summary}
+\newtheorem*{rmk}{Remark}
+\newmdtheoremenv{lemma}[thm]{Lemma}
+\newtheorem*{joke}{Joke}
+\newtheorem{ex}{Example}
+\numberwithin{ex}{subsection}
+\newtheorem*{soln}{Solution}
+\newmdtheoremenv{prop}[thm]{Proposition}
+\newmdtheoremenv{assm}[thm]{Assumption}
+
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\graph}{\mathrm{graph}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\Z}{\bb{Z}}
+\newcommand{\Q}{\bb{Q}}
+\newcommand{\R}{\bb{R}}
+\newcommand{\N}{\bb{N}}
+\newcommand{\M}{\mathbf{M}}
+\newcommand{\m}{\mathbf{m}}
+\newcommand{\MM}{\mathscr{M}}
+\newcommand{\HH}{\mathscr{H}}
+\newcommand{\Om}{\Omega}
+\newcommand{\Ho}{\in\HH(\Om)}
+\newcommand{\bd}{\partial}
+\newcommand{\del}{\partial}
+\newcommand{\bardel}{\overline\partial}
+\newcommand{\textdf}[1]{\textbf{\textsf{#1}}\index{#1}}
+\newcommand{\img}{\mathrm{img}}
+\newcommand{\ip}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\inter}[1]{\mathrm{int}{#1}}
+\newcommand{\exter}[1]{\mathrm{ext}{#1}}
+\newcommand{\cl}[1]{\mathrm{cl}{#1}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\vol}{\mathrm{vol}}
+\newcommand{\cnt}{\mathrm{ct}}
+\newcommand{\osc}{\mathrm{osc}}
+\newcommand{\LL}{\mathbf{L}}
+\newcommand{\UU}{\mathbf{U}}
+\newcommand{\support}{\mathrm{support}}
+\newcommand{\AND}{\;\wedge\;}
+\newcommand{\OR}{\;\vee\;}
+\newcommand{\Oset}{\varnothing}
+\newcommand{\st}{\ni}
+\newcommand{\wh}{\widehat}
+\newcommand{\plim}{\overset{p}{\rightarrow}}
+\newcommand{\dlim}{\overset{d}{\rightarrow}}
+\newcommand{\sumi}{\sum_{i=1}^n}
+\newcommand{\ninfty}{n\rightarrow\infty}
+\newcommand{\bhat}{\hat{\beta}}
+\newcommand{\yhat}{\hat{y}}
+\newcommand{\ehat}{\hat{e}}
+\newcommand{\xbar}{\bar{x}}
+\newcommand{\ybar}{\bar{y}}
+\newcommand{\zbar}{\bar{z}}
+\newcommand{\iid}{\overset{i.i.d}{\sim}}
+\newcommand{\thetah}{\hat{\theta}}
+\newcommand{\Vhat}{\hat{V}}
+\newcommand{\btilde}{\tilde{\beta}}
+\newcommand{\bmd}{\btilde_{md}}
+\newcommand{\bgmm}{\bhat_{GMM}}
+\newcommand{\ow}{\text{ otherwise }}
+\newcommand{\textif}{\text{ if }}
+
+\DeclareMathOperator*{\amax}{arg\,max}
+\DeclareMathOperator*{\amin}{arg\,min}
+
+%Pagination stuff.
+\pagenumbering{arabic}
+
+%%% The "real" document content comes below...
+
+\title{Introduction to Econometrics II\thanks{Columbia University Economics Ph.D. First Year 2018-2019. Professor Jushan Bai and Simon Lee. Mostly from Professors' lectures, \cite{hanseneconometrics}, \cite{cameronandtrivedi}, \cite{mostlyharmless}, \cite{wooldridgepanel},  and sometimes Professor Christoph Rothe's lecture notes.}} 
+\author{Dong Woo Hahm\thanks{Department of Economics, Columbia University. \href{mailto:dongwoo.hahm@columbia.edu}{dongwoo.hahm@columbia.edu}. \\Please email me for any error. This note will be continuously updated throughout the semester. Please do not circulate outside of the class.}}
+\date{Spring 2019} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+		
+\begin{document}
+\maketitle
+\tableofcontents
+\clearpage
+%\abstract{}
+\section{Review of Asymptotic Theory}
+\noindent Usually econometrics is about analyzing data from an economic context and has steps including:
+\begin{itemize}
+\item Formulating an appropriate model
+\item Computing estimates of unknown parameters in such a model
+\item Quantifying the uncertainty about those estimates
+\item Use these measures of uncertainty to draw empirical conclusions
+\end{itemize}
+Asymptotic theory is usually related to the third step, ``Quantifying the uncertainty".
+\subsection{Basic Setup}
+\begin{itemize}
+	\item Data : $\{z_i \}_{i=1}^n$ with joint distribution $P_n$
+	\item Model : A set $\mathcal{P}_n$ of potential candidates for $P_n$. Restrictions may be imposed as necessary.
+	\item Independent and identically distributed (i.i.d) data
+	\begin{align*}
+	P_n=P\times P\cdots \times P
+	\end{align*}
+	\item Random variable (vector) of interest:
+	\begin{align*}
+	\thetah_n=f_n(z_1,\cdots,z_n)
+	\end{align*}
+	e.g) estimator, test statistics ...
+\end{itemize}
+We are interested in features of the distribution of $\thetah_n$ with a finite sample size $n$, which is usually impossible or impractical.
+%\begin{ex}\leavevmode
+%	\begin{itemize}
+%		\item $z_i\iid N(\mu,\sigma^2)$ : $\thetah_n=\bar{z}\sim N(\mu,\sigma^2/n)$
+%		\item $z_i\iid N(\mu,\sigma^2)$ : $\thetah_n=\sqrt{n}(\bar{z}-\mu)/s_z\sim t_{n-1}$
+%		\item $z_i\iid Exp(\lambda)$ : $\thetah_n=\bar{z}$. The distribution of $\thetah_n$ is known in principle but without convenient closed form expression.
+%		\item $z_i\iid (\mu,\sigma^2)$ : $\thetah_n=\bar{z}$. Only first two moments are known and we don't know about the exact distribution.
+%	\end{itemize}
+%\end{ex}
+Instead, we typically use asymptotics to derive approximations to the distribution of $\thetah_n$. The general idea is to think of $\thetah_n$ as the $n$th element of an infinite sequence and to calculate the limit of the sequence (if exists).% We have two things we can choose : the \textbf{sequence} itself and the \textbf{type of the limit}. We will first focus on the type of limits (holding $P$ fixed and increasing $n$ to infinity) and then return to alternative concepts later.
+
+\subsection{Modes of Convergence}
+\subsubsection{Covergence in Probability}
+\begin{defn}
+	A sequence of random variables $z_n$ is said to \textbf{converge in probability} to a random variable $z$ if for any $\delta>0$, $\lim_{n\rightarrow\infty}P(|z_n-z|\le\delta)=1$ or equivalently, $\lim_{n\rightarrow\infty}P(|z_n-z|>\delta)=0$ and we denote as $z_n\overset{p}{\rightarrow}z$ or $p\lim_{n\rightarrow\infty}z_n=z$.
+\end{defn}
+
+\begin{thm}\label{thm:wlln}
+	\textbf{(Khintchine's Weak Law of Large Numbers)}\\
+	If $z_1,\cdots z_n$ are i.i.d with $E(z_i)=\mu$, then $\bar{z}_n\overset{p}{\rightarrow}\mu$ where $|\mu|<+\infty$.
+	\begin{proof}
+		Assume $Var(z_i)=\sigma^2<+\infty$. For any $\delta>0$,
+		\begin{align*}
+		P(|\bar{z}_n-\mu|>\delta)&\le\frac{E(|\bar{z}_n-\mu|^2)}{\delta^2}\tag*{: Chebyshev's Inequality}\\
+		&=\frac{\sigma^2}{\delta^2\cdot n}\\
+		&\rightarrow 0\tag*{as $n\rightarrow\infty$}
+		\end{align*}
+	\end{proof}
+\end{thm}
+
+\subsubsection{Convergence in Distribution}
+\begin{defn}
+	Let $z_n$ be a sequence of random variables and define $F_n(x)=P(z_n\le x)$. Let $z$ a random variable of which distribution function is $F(x)=P(z\le x)$. $z_n$ is said to \textbf{converge in distribution} to $z$ if $F_n(x)\rightarrow F(x)$ as $n\rightarrow\infty$ at all $x$ where $F$ is continuous. We denote this by $z_n\overset{d}{\rightarrow}z$.
+\end{defn}
+
+\begin{itemize}
+	\item $z$ is usually called the asymptotic distribution of limit distribution of $z_n$.
+	\item $z_n\overset{d}{\rightarrow}z$ does not necessarily mean that $z_n$ and $z$ are close (only the cdfs are close) where as $z_n\overset{p}{\rightarrow}z$ implies $z_n$ and $z$ are close.
+	\item $z_n\overset{p}{\rightarrow}z$ implies $z_n\overset{d}{\rightarrow}z$
+	\item However, $z_n\dlim z$ don't imply $z_n\plim z$\\
+	For example, consider $Y_n$ and $Y$ that are mutually independent with distributions given by
+	\begin{align*}
+	Y_n=\begin{cases}
+	1\text{ with probability }\frac{1}{2}+\frac{1}{n+1}\\
+	0\text{ with probability }\frac{1}{2}-\frac{1}{n+1}
+	\end{cases}\\
+	Y=\begin{cases}
+	1\text{ with probability }\frac{1}{2}\\
+	0\text{ with probability }\frac{1}{2}
+	\end{cases}
+	\end{align*}
+	\item If $z=c\in\R(\Leftrightarrow P(z=c)=1)$, that is the limit distribution $z$ is degenerate, then $z_n\overset{p}{\rightarrow}c$ $\Leftrightarrow$ $z_n\overset{d}{\rightarrow}c$
+\end{itemize}
+
+\begin{thm}\label{thm:lindeberglevyclt}
+	\textbf{(Lindeberg-Levy Central Limit Thoerem)}\\
+	Let $z_1,\cdots z_n$ be i.i.d with $E(z_i)=\mu,Var(z_i)=\sigma^2$ where $|\mu|<+\infty,\sigma^2<+\infty$. Then
+	\begin{align*}
+	\sqrt{n}(\bar{z}_n-\mu)=\frac{1}{\sqrt{n}}\sum_{i=1}^n (z_i-\mu)\overset{d}{\rightarrow} N(0,\sigma^2)
+	\end{align*}
+	That is,
+	\begin{align*}
+	\lim_{n\rightarrow\infty}P(\frac{1}{\sqrt{n}}\sum_{i=1}^n (z_i-\mu)\le a)=\int_{-\infty}^a\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{1}{2\sigma^2}x^2)dx.
+	\end{align*}
+	for all $a\in\R$.
+\end{thm}
+
+\begin{rmk}
+	\textbf{(WLLN and CLT)}\\
+	By WLLN, $\bar{X}-\mu\plim 0$. In some sense with WLLN, $\bar{X}-\mu$ goes to 0 too fast as $\ninfty$. Thus by multiplying $\sqrt{n}$, the CLT slows down the speed of convergence to make it converge to some non degenerate distribution, i.e, $\sqrt{n}(\bar{X}-\mu)\dlim Z\sim N(0,\sigma^2)$.
+\end{rmk}
+
+
+%Berry-Esseen Theorem tells us how good the approximation provided by the CLT.
+%\begin{thm}
+%	\textbf{(Berry-Esseen)}\\
+%	For all sample sizes $n$ and all $t\in\R$,
+%	\begin{align*}
+%	\Bigr|P\Bigr(\sqrt{n}\frac{\bar{z}-\mu}{\sigma}\le t\Bigr)-\Phi(t)\Bigr|<\frac{C\cdot E(|z_i-\mu|^3)}{\sigma^3\sqrt{n}}
+%	\end{align*}
+%	for some constant $C\in (0.4097,0.4748)$.
+%\end{thm}
+%Berry-Esseen Theorem says the accuracy of CLT approximation depends on the standardized absolute 3rd moment of the distribution of $z_i$ and the square root of the sample size, $\sqrt{n}$. Thus approximating distributions of $z_i$ with heavy tails (for example, binary random variables) using CLT might have poor accuracy.
+
+Similar things hold for random vectors, a vector of random variables. First, let's define random vectors.
+
+\begin{defn}
+	$\bm{y}=\begin{pmatrix}y_1\\\vdots\\y_m\end{pmatrix}\in\R^m$ is called a \textbf{random vector}. We define $E(\bm{y})=\begin{pmatrix}E(y_1)\\\vdots\\E(y_m)\end{pmatrix}\in\R^m$ and $||\bm{y}||=\sqrt{\bm{y}^T\bm{y}}=(y_1^2+\cdots y_m^2)^{\frac{1}{2}}$.
+\end{defn}
+
+\begin{thm}
+	$E||\bm{y}||<+\infty\Leftrightarrow E|y_j|<+\infty,\forall j=1,2,\cdots,m$ where $m$ is a finite natural number.
+	\begin{proof}
+		$(\impliedby)$ $y_1^2+\cdots+y_m^2\le(|y_1|+\cdots+|y_m|)^2$ $\Rightarrow||y||\le|y_1|+\cdots+|y_m|$. So from $E|y_i|<+\infty,E||y||<+\infty$.\\
+		$(\implies)$ $|y_j|\le(|y_1|^2+\cdots+|y_m|^2)^{\frac{1}{2}},\forall j=1,2,\cdots,m$ $\Rightarrow|y_j|\le||\bm{y}||,\forall j=1,2,\cdots,m$. So from $E||\bm{y}||<+\infty,E|y_j|<+\infty,\forall j=1,2,\cdots,m$.
+	\end{proof}
+\end{thm}
+
+Convergence in probability of a random vector is defined as convergence in probability of all elements in the vector. Hence, multivariate version of WLLN (Theorem \ref{thm:wlln}) holds.
+
+\begin{thm}\label{thm:wlln(vector)}
+	\textbf{(WLLN for Random Vectors)}\\
+	Let $\bm{y}_i$ be i.i.d where $\bm{y}_i\in\R^m$ s.t. $E||\bm{y}_i||<+\infty,\forall i$. Let $\bar{\bm{y}}_n=\frac{1}{n}\sum_{i=1}^n \bm{y}_i=\begin{pmatrix}
+	\bar{y}_1\\\vdots\\\bar{y}_m\end{pmatrix}$, then 
+	\begin{align*}
+	\bar{\bm{y}}_n\overset{p}{\rightarrow}E(\bm{y}_i)=\begin{pmatrix}E(y_{i1})\\\vdots\\E(y_{im})\end{pmatrix}
+	\end{align*}
+	\begin{proof}
+		By definition, $\bar{\bm{y}}_n\plim E(\bm{y}_i)$ if and only if $\bar{y}_j\plim \mu_j,\forall j=1,2,\cdots,m$. The latter holds if $E|y_j|<+\infty,\forall j=1,2,\cdots,m$ which is equivalent to $E|\bm{y}_i|<+\infty$.
+	\end{proof}
+\end{thm}
+
+Though Lindeberg-Levy CLT (Theorem \ref{thm:lindeberglevyclt}) only provides the case for scalar random variables, it can be extended to multivariate data via Cramer-Wold device.
+
+\begin{thm}\label{thm:cramerwold}
+	\textbf{(Cramer-Wold)}	\\
+	Let $\hat{\gamma}_n,\gamma_{\infty}$ be vector-valued random vectors. Then $\hat{\gamma}_n\dlim \gamma_{\infty}$ if and only if $\lambda'\hat{\gamma}_n\dlim\lambda'\gamma_{\infty}$ for all fixed vectors $\lambda$ with $\lambda'\lambda=1$.
+\end{thm}
+
+%One implication of Cramer-Wold is that if $\{z_i \}_{i=1}^n$ is i.i.d with mean $\mu$ and variance $\Sigma$ then
+%\begin{align*}
+%\sqrt{n}(\bar{z}-\mu)\dlim N(0,\Sigma)
+%\end{align*}
+%which yields the approximation that $\bar{z}\sim^a N(\mu,\Sigma/n)$.
+
+\begin{thm}\label{thm:clt(vector)}
+	\textbf{(Multivariate Lindeberg-Levy Central Limit Theorem)}	\\
+	If $\bm{y}_i\in\R^k$ are independent and identically distributed and $E||\bm{y}_i||^2<+\infty$, then as $\ninfty$
+	\begin{align*}
+	\sqrt{n}(\bar{\bm{y}}_n-\mu)\dlim N(0,V)
+	\end{align*}
+	where $\mu=E(\bm{y})$ and $V=E((\bm{y}-\mu)(\bm{y}-\mu)')$.
+	\begin{proof}
+		Fix some $\lambda\in \R^k$ such that $\lambda'\lambda=1$. Define $u_i=\lambda'(\bm{y}_i-\mu)$. Then $u_i$ are i.i.d with $E(u_i^2)=\lambda'V\lambda<\infty$. We have
+		\begin{align*}
+		\lambda'\sqrt{n}(\bar{\bm{y}_n}-\mu)=\frac{1}{\sqrt{n}}\sumi u_i\dlim N(0,\lambda'V\lambda)
+		\end{align*}
+		If some random vector $\bm{z}\sim N(0,V)$ then $\lambda' \bm{z}\sim N(0,\lambda'V\lambda)$. Thus, we have
+		\begin{align*}
+		\lambda'\sqrt{n}(\bar{\bm{y}}_n-\mu)\dlim \lambda' \bm{z}
+		\end{align*}
+		Since the choice of $\lambda$ was arbitrary, by Cramer-Wold device (Theorem \ref{thm:cramerwold}), we have
+		\begin{align*}
+		\sqrt{n}(\bar{\bm{y}}_n-\mu)\dlim\bm{z}
+		\end{align*}
+	\end{proof}
+\end{thm}
+
+\subsubsection{Sufficient Conditions for Joint Weak Convergence}
+For probability limits, it is straightforward.
+\begin{thm}
+	If $X_n\plim X$ and $Y_n\plim Y$ then $(X_n,Y_n)\plim (X,Y)$	
+\end{thm}
+However for weak convergence, things are a bit more complicated. The following two theorems give some examples of sufficient conditions for joint weak convergence.
+\begin{thm}
+	If $X$ is independent of each $Y_i$ in $\{Y_i\}$ and $Y_n\dlim Y$, then $(X,Y_n)\dlim (X,Y)$.
+\end{thm}
+
+\begin{thm}
+	If $X_n,Y_n$ and $X,Y$ are mutually independent, then the marginal convergence in distribution implies joint convergence in distribution.
+	\begin{align*}
+	X_n\dlim X, Y_n\dlim Y \Rightarrow (X_n,Y_n)\dlim (X,Y)
+	\end{align*}
+	\begin{proof}
+		\begin{align*}
+		\lim_{\ninfty}P(X_n\le x,Y_n\le y)&=\lim_{\ninfty}P(X_n\le x)P(Y_n\le y)\\
+		&=\lim_{\ninfty}P(X_n\le x)\lim_{\ninfty}P(Y_n\le y)\\
+		&=P(X\le x)P(Y\le y)\\
+		&=P(X\le x,Y\le y)
+		\end{align*}
+	\end{proof}
+\end{thm}
+
+\subsection{Continuous Mapping Theorem and Delta Method}
+Continuous Mapping theorem and Slutsky's theorem tell us how to manipulate limits in probability and distribution.
+
+\begin{thm}\label{thm:CMT}
+	\textbf{(Continuous Mapping Theorem)}\\
+	If $z_n\overset{p,d}{\rightarrow}z$, and $g(\cdot)$ is has the set of discontinuity points $D_g$ such that $Pr(z\in D_g)=0$, then $g(z_n)\overset{p,d}{\rightarrow}g(z)$.\footnote{Note that if $z$ is a degenerate point, the condition reduces to $g(\cdot)$ is continuous at $z$.}
+	\begin{proof}
+		I only prove when $z=c$ is degenerate.
+		
+		Since $g$ is continuous at $c$, we can find a $\delta>0$ such that if $||z_n-c||<\delta$ then $||g(z_n)-g(c)||\le\epsilon$ for all $\epsilon>0$. Recall that $A\subset B$ implies $P(A)\le P(B)$. Thus $P(||g(z_n)-g(c)||\le\epsilon)\ge P(||z_n-c||<\delta)\rightarrow1$ as $n\rightarrow\infty$ by the assumption that $z_n\overset{p}{\rightarrow}c$. Hence $g(z_n)\overset{p}{\rightarrow}g(c)$ as $n\rightarrow\infty$.
+	\end{proof}
+\end{thm}
+
+\begin{thm}\label{thm:slutsky}
+	\textbf{(Slutsky's Theorem)}\\
+	If $X_n\overset{d}{\rightarrow}Z,Y_n\overset{p}{\rightarrow}c$ as $n\rightarrow\infty$, then
+	\begin{enumerate}
+		\item $X_n+Y_n\overset{d}{\rightarrow}Z+c$
+		\item $X_n-Y_n\dlim Z-c$
+		\item $X_nY_n\overset{d}{\rightarrow}Zc$
+		\item $\frac{X_n}{Y_n}\overset{d}{\rightarrow}\frac{Z}{c}$ if $c\neq0$
+	\end{enumerate}
+\end{thm}
+
+Delta method is another way of approximating the distribution of ``smooth" transformations of simpler objects.\footnote{The method used in proof of Delta method using Taylor expansion is extremely useful in econometrics. We will get to see this later in course for example in proving asymptotic normality of any type of extremum estimators, LM tests, or LR tests.}
+
+\begin{thm}\label{thm:deltamethod}
+	\textbf{(Delta Method)}\\
+	Suppose that $\sqrt{n}(\hat{\theta}_n-\theta_0)\dlim\xi\in\R ^m$ where $g:\R^m\rightarrow\R^k,k\le m$ is continuously differentiable at $x=\theta_0$. Then $\sqrt{n}(g(\hat{\theta}_n)-g(\theta_0))\dlim G^T\xi$ where $G=(g'(\theta_0))^T$, the transpose of Jacobian matrix of $g$ evaluated at $\theta_0$.
+	\begin{proof}
+		Prove only for the case $k=1$.\\
+		$g(x)=g(\theta_0)+g'(\bar{x})(x-\theta_0)$ where $\bar{x}$ is in between $x$ and $\theta_0$.\\
+		Replace $x=\hat{\theta}_n$ then $g(\hat{\theta}_n)=g(\theta_0)+g'(\bar{\theta}_n)(\hat{\theta}_n-\theta_0)$ where $\bar{\theta}_n$ is in between $\hat{\theta}_n$ and $\theta_0$. Thus,
+		\begin{align*}
+		\sqrt{n}(g(\hat{\theta}_n)-g(\theta_0))=g'(\bar{\theta}_n)\sqrt{n}(\hat{\theta}_n-\theta_0)
+		\end{align*}
+		Since $\hat{\theta}_n\plim\theta_0$ and $\sqrt{n}(\hat{\theta}_n-\theta_0)\dlim\xi$ and $g'$ is continuous at $\theta_0$ and $||\bar{\theta}_n-\theta_0||\le||\hat{\theta}_n-\theta_0||,g'(\bar{\theta}_n)\plim g'(\theta_0)$.\\
+		Thus, $\sqrt{n}(g(\hat{\theta}_n)-g(\theta_0))\dlim g'(\theta_0)\xi$ by Slutsky's theorem.
+	\end{proof}	
+	Note that we implicitly require that $G$ is full-rank.
+\end{thm}
+
+\subsection{Stochastic Orders}
+
+
+\begin{defn}\textbf{(Stochastic Orders)}\\
+	For deterministic sequences,
+	\begin{itemize}
+		\item $x_n=o(1)\iff x_n\rightarrow0$
+		\item $x_n=o(a_n)\iff \frac{x_n}{a_n}\rightarrow 0$
+		\item $x_n=O(1) \iff \exists M<+\infty$ s.t. $|x_n|\le M,\forall n$
+		\item $x_n=O(a_n) \iff \frac{x_n}{a_n}=O(1)$
+	\end{itemize}
+	For stochastic sequences, 
+	\begin{itemize}
+		\item $z_n=o_p(1)\iff z_n\plim 0$
+		\item $z_n=o_p(a_n)\iff\frac{z_n}{a_n}\plim 0$
+		\item $z_n=O_p(1)\iff \forall\epsilon>0,\exists M_{\epsilon}>0$ s.t. $P(|z_n|>M_{\epsilon})<\epsilon,\forall n$\footnote{$z_n=O_p(1)$ is equivalent to saying that $z_n$ is stochastically bounded which roughly means that the tail probability is small.}
+		\item $z_n=O_p(a_n)\iff\frac{z_n}{a_n}=O_p(1)$
+%		\item $a_n$ is a deterministic sequence but we allow it to be a sequence of random variables as well.
+	\end{itemize}
+%	\begin{rmk}
+%		\textbf{($O_p(1)$ and Uniformly Tight)}
+%		\begin{itemize} 
+%			\item $X_n=O_p(1)$ means ${X_n}$, a sequence of random variables is \textbf{uniformly tight}. 
+%			\item Any random variable $X$ itself is a $O_p(1)$ in the sense that a sequence of random variables $\{X,X,X,X\cdots\}$ is uniformly tight.
+%		\end{itemize}
+%	\end{rmk}
+\end{defn}
+
+
+\begin{ex} For any consistent estimator $\hat{\beta}$ for $\beta$, $\hat{\beta}=\beta+o_p(1)$.
+%	\begin{itemize}
+%		\item For any consistent estimator $\hat{\beta}$ for $\beta$, $\hat{\beta}=\beta+o_p(1)$.
+%		\item For plug-in estimators $\hat{\beta}$ for $\beta$, $\hat{\beta}=\beta+O_p(n^{-1/2}).$
+%	\end{itemize}
+\end{ex}
+
+%\begin{rmk}
+%	\textbf{(Some Properties of Stochastic Orders)}
+%	\begin{enumerate}
+%		\item $z_n=O_p(a_n)\Rightarrow z_n=o_p(b_n)$ for any $b_n$ such that $a_n/b_n\rightarrow 0$.
+%		\item $z_n=o_p(1)\Rightarrow z_n=O_p(1)$
+%		\item $z_n=o_p(1)\nLeftarrow z_n=O_p(1)$
+%		\item $z_n\plim z \Rightarrow z_n=O_p(1)$
+%		\begin{proof}
+%			Fix $\epsilon>0.$
+%			\begin{itemize}
+%				\item $\exists M(\epsilon)>0$ s.t. $P(|z|>\frac{M(\epsilon)}{2})<\frac{\epsilon}{2}$ since $P(|z|>t)=F_z(-t)+(1-F_z(t))\rightarrow 0$.
+%				\item Since $z_n\plim z$, $\lim_n P(|z_n-z|>\frac{M(\epsilon)}{2})<\frac{\epsilon}{2}$. Thus $\exists N\in\N, n>N\Rightarrow P(|z_n-z|>\frac{M(\epsilon)}{2})<\frac{\epsilon}{2}$.
+%				\item For $n\le N$, $\exists M_n>0$ s.t. $P(|z_n|>M_n)<\epsilon$
+%				\item Let $M_{\epsilon}=\max\{M_1,\cdots,M_N,M(\epsilon) \}$
+%				\item If $n\le N$, $P(|z_N|>M_{\epsilon})\le P(|z_N|>M_n)<\epsilon$\\
+%				If $n>N$,
+%				\begin{align*}
+%				P(|z_n|>M_{\epsilon})&\le P(|z_n-z|+|z|>M_{\epsilon})\\
+%				&\le P(|z_n-z|>\frac{M_{\epsilon}}{2})+P(|z|>\frac{M_{\epsilon}}{2})\\
+%				&\le P(|z_n-z|>\frac{M(\epsilon)}{2})+P(|z|>\frac{M(\epsilon)}{2})\\
+%				&<\epsilon
+%				\end{align*}
+%			\end{itemize}
+%		\end{proof}
+%		\item $z_n\dlim z \Rightarrow z_n=O_p(1)$
+%		\begin{proof}
+%			(Prohorov's)\\
+%			Fix $M$ s.t. $P(|z|\ge M)<\epsilon$. By Portmanteau lemma, $P(||z_n||\ge M)$ exceeds $P(||z||\ge M)$ arbitarily little for sufficiently large $n$. Thus $\exists N$ s.t. $P(||z_n||\ge M)<2\epsilon,\forall n\ge N$. Because each of the finitely many variables $z_n$ with $n<N$ is tight, the value of $M$ can be increased to ensure that $P(||z_n||\ge M)<2\epsilon,\forall n$.
+%		\end{proof}
+%		\item If $E(|z_n|)\le c<+\infty,\forall n$, then $z_n=O_p(1)$
+%		\begin{proof}
+%			Use Markov inequality. Let $\epsilon>0$. Then there exists $M(\epsilon)$ such that $\frac{c}{M(\epsilon)}<\epsilon$. Then for each $n\in\N,P(|z_n|>M(\epsilon))\le \frac{E(|z_n|)}{M(\epsilon)}\le \frac{c}{M(\epsilon)}<\epsilon$.
+%		\end{proof}
+%		\item If $z_n=O_p(1), a_n\rightarrow\infty$ then $\frac{z_n}{a_n}=o_p(1)$.
+%		\begin{proof}
+%			$\exists M_{\delta}>0$ s.t. $P(|z_n|>M_{\delta})<\delta,\forall n$. Fix $\epsilon>0$ then
+%			\begin{align*}
+%			P(|z_n/a_n|>\epsilon)&=P(|z_n/a_n|>\epsilon,|z_n|>M_{\delta})+P(|z_n/a_n|>\epsilon,|z_n|\le M_{\delta})\\
+%			&\le P(|z_n|>M_{\delta})+P(|M_{\delta}/a_n|>\epsilon)\\
+%			&<\delta
+%			\end{align*}
+%			as $\ninfty$ and since $\delta$ arbitarily chosen, we're done.
+%		\end{proof}
+%	\end{enumerate}
+%\end{rmk}
+
+\begin{thm}
+	\textbf{(Random Sequence with a Bounded Moment is Stochastically Bounded)}\\
+	If $z_n$ is a random vector which satisfies
+	\begin{align*}
+	E||z_n||^{\delta}=O(a_n)
+	\end{align*}
+	for some sequence $a_n$ and $\delta>0$, then
+	\begin{align*}
+	z_n=O_p(a_n^{1/\delta})
+	\end{align*}
+	Similarly, $E||z_n||^{\delta}=o(a_n)$ implies $z_n=o_p(a_n^{1/\delta}).$
+	
+	\begin{proof}
+		The assumptions imply that there is some $M<+\infty$ such that $E||z_n||^{\delta}\le Ma_n$ for all $n$. For any $\epsilon$ set $B=(\frac{M}{\epsilon})^{1/\delta}$. Then
+		\begin{align*}
+		P(a_n^{-1/\delta}||z_n||>B)=P(||z_n||^{\delta}>\frac{Ma_n}{\epsilon})\le\frac{\epsilon}{Ma_n}E||z_n||^{\delta}\le\epsilon
+		\end{align*}
+	\end{proof}
+\end{thm}
+
+\begin{thm}
+	\textbf{(Simple Rules for Stochastic Orders)}
+	\begin{enumerate}
+		\item $o_p(1)+o_p(1)=o_p(1)$
+		\item $o_p(1)+O_p(1)=O_p(1)$
+		\item $O_p(1)+O_p(1)=O_p(1)$
+		\item $o_p(1)o_p(1)=o_p(1)$
+		\item $o_p(1)O_p(1)=o_p(1)$
+		\item $O_p(1)O_p(1)=O_p(1)$
+	\end{enumerate}
+	\begin{proof}\leavevmode
+		Below I provide proof for some of the above. Rest of them can be proved using Continuous Mapping theorem and Slutsky's theorem.
+		\begin{itemize}
+			\item[3.] Let $y_n=O_p(1),z_n=O_p(1).$ Fix $\epsilon>0$. Then $\exists M_y>0$ s.t. $P(|y_n|>M_y)<\frac{\epsilon}{2},\forall n$, $\exists M_z>0$ s.t. $P(|z_n|>M_z)<\frac{\epsilon}{2},\forall n$. Let $M_{\epsilon}=M_y+M_z$ then
+			\begin{align*}
+			P(|z_n+y_n|>M_{\epsilon})&\le P(|z_n|+|y_n|>M_{\epsilon})\\
+			&\le P(|z_n|>M_z)+P(|y_n|>M_y)<\epsilon
+			\end{align*}
+			
+			\item[5.] Let $y_n=o_p(1),z_n=O_p(1).$ Fix $\epsilon,\delta>0$. Let $M_{\epsilon}$ be s.t. $P(|z_n|>M_{\epsilon})<\frac{\epsilon}{2},\forall n$. For sufficiently large $n$,
+			\begin{align*}
+			P(|z_ny_n|>\delta)&=P(|z_ny_n|>\delta,|z_n>M_{\epsilon})+P(|z_ny_n|>\delta,|z_n|\le M_{\epsilon})\\
+			&\le P(|z_n|>M_{\epsilon})+P(|y_n|>\frac{\delta}{M_{\epsilon}})\\
+			&\le \epsilon
+			\end{align*}
+			as $\ninfty$ since $y_n=o_p(1)$.
+			
+			\item[6.] Let $y_n=O_p(1),z_n=O_p(1).$ Fix $\epsilon>0$. Then $\exists M_y>0$ s.t. $P(|y_n|>M_y)<\frac{\epsilon}{2},\forall n$, $\exists M_z>0$ s.t. $P(|z_n|>M_z)<\frac{\epsilon}{2},\forall n$. Let $M_{\epsilon}=M_y\cdot M_z$ then,
+			\begin{align*}
+			P(|z_ny_n|>M_{\epsilon})&=P(|z_n||y_n|>M_{\epsilon})\\
+			&\le P(|z_n|>M_{\epsilon})+P(|y_n|>M_y)\\
+			&<\epsilon
+			\end{align*}
+		\end{itemize}
+	\end{proof}
+\end{thm}
+
+\subsection{Inequalities\footnote{In this subsection I restate a number of useful equalities and their proofs from Hansen's textbook. You don't have to know the proofs unless you are interested in.}}
+\begin{thm}\label{thm:jensensineq}
+	\textbf{(Jensen's Inequality)}\\
+	If $g(\cdot):\R^m\rightarrow\R$ is convex, then for any random vector $x$ for which $E||x||<+\infty$ and $E|g(x)|<+\infty$,
+	\begin{align*}
+	g(E(x))\le E(g(x)).
+	\end{align*}
+	\begin{proof}
+		Since $g(u)$ is convex, at any point $u$ there is a nonempty set of subderivatives (linear surfaces touching $g(u)$ at $u$ but lying below $g(u)$ for all $u$). Let $a+b^t u$ be a subderivative of $g(u)$ at $u=E(x)$. Then for all $u$, $g(u)\ge a+b^tu$ yet $g(E(x))=a+b^TE(x)$. Applying expectations, $E(g(x))\ge a+b^T E(x)=g(E(x))$.
+	\end{proof}
+\end{thm}
+
+\begin{thm}\label{thm:conditionaljensensineq}
+	\textbf{(Conditional Jensen's Inequality)}\\
+	If $g(\cdot):\R^m\rightarrow\R$ is convex, then for any random vectors $(y,x)$ for which $E||y||<+\infty$ and $E||g(y)||<+\infty$,
+	\begin{align*}
+	g(E(y|x))\le E(g(y)|x)
+	\end{align*}	
+\end{thm}
+
+\begin{thm}\label{thm:conditionalexpectationineq}
+	\textbf{(Conditional Expectation Inequality)}\\
+	For any $r\ge 1$ such that $E|y|^r<+\infty$, then
+	\begin{align*}
+	E|E(y|x)|^r\le E|y|^r <+\infty
+	\end{align*}
+	
+	\begin{proof}
+		By Conditional Jensen's inequality and the law of iterated expectations.
+	\end{proof}	
+\end{thm}
+
+\begin{thm}\label{thm:expectationineq}
+	\textbf{(Expectation Inequality)}\\
+	For any random matrix $Y$ for which $E||Y||<+\infty$,
+	\begin{align*}
+	||E(Y)||\le E||Y||.
+	\end{align*}
+	\begin{proof}
+		Since matrix norm $||\cdot||$ is convex, apply Jensen's inequality.
+	\end{proof}
+\end{thm}
+
+
+\begin{thm}\label{thm:holdersineq}
+	\textbf{(H\"{o}lder's Inequality)}\\
+	If $p>1$ and $q>1$ and $\frac{1}{p}+\frac{1}{q}=1$, then for any random $m\times n$ matrices $X$ and $Y$,
+	\begin{align*}
+	E||X^TY||\le(E||X||^p)^{1/p}(E||Y||^q)^{1/q}.
+	\end{align*}
+	\begin{proof}
+		Since $\frac{1}{p}+\frac{1}{q}=1$, $exp(\cdot)$ is convex, apply Jensen's Inequality. For any real $a$ and $b$,
+		\begin{align*}
+		\exp\Big[\frac{1}{p}a+\frac{1}{q}b\Big]\le\frac{1}{p}\exp(a)+\frac{1}{q}\exp(b)
+		\end{align*}
+		Now let $u=exp(a)$ and $v=exp(b)$. Then,
+		\begin{align*}
+		u^{1/p}v^{1/q}\le\frac{u}{p}+\frac{v}{q}
+		\end{align*}
+		Now let $u=||X||^p/E||X||^p$ and $v=||Y||^q/E||Y||^q$. Note that $E(u)=E(v)=1$. By matrix Schwarz Inequality, $||X^TY||\le||X||||Y||$. Thus,
+		\begin{align*}
+		\frac{E||X^TY||}{(E||X||^p)^{1/p}(E||Y||^q)^{1/q}}&\le\frac{E(||X||||Y||)}{(E||X||^p)^{1/p}(E||Y||^q)^{1/q}}\\
+		&=E(u^{1/p}v^{1/q})\\
+		&\le E(\frac{u}{p}+\frac{v}{p})\\
+		&=\frac{1}{p}+\frac{1}{q}\\
+		&=1
+		\end{align*}
+	\end{proof}
+\end{thm}
+
+\begin{thm}\label{thm:CSineq}
+	\textbf{(Cauchy-Schwarz Inequality)}\\
+	For any random $m\times n$ matrices $X$ and $Y$,
+	\begin{align*}
+	E||X^TY||\le (E||X||^2)^{1/2}(E||Y||^2)^{1/2}
+	\end{align*}
+\end{thm}
+
+%\begin{thm}
+%	\textbf{(Matrix Cauchy-Schwarz Inequality)}\\
+%	Triathi (1999). For any random $x\in\R^m$ and $y\in\R^l$,
+%	\begin{align*}
+%	E(yx^T)(E(xx^T))^-E(xy^T)\le E(yy^T)
+%	\end{align*}	
+%\end{thm}
+
+\begin{thm}\label{thm:minkowski'sineq}
+	\textbf{(Minkowski's Inequality)}\\
+	For any random $m\times n$ matrices $X$ and $Y$,
+	\begin{align*}
+	(E||X+Y||^p)^{1/p}\le(E||X||^p)^{1/p}+(E||Y||^p)^{1/p}
+	\end{align*}	
+	\begin{proof}
+		\begin{align*}
+		E||X+Y||^p&=E(||X+Y||||X+Y||^{p-1})\\
+		&\le E(||X||||X+Y||^{p-1})+E(||Y||||X+Y||^{p-1})\\
+		&\le (E||X||^p)^{1/p}E(||X+Y||^{q(p-1)})^{1/q}\\
+		&+(E||Y||^p)^{1/p}E(||X+Y||^{q(p-1)})^{1/q}\\
+		&=((E||X||^p)^{1/p}+(E||Y||^p)^{1/p})E(||X+Y||^p)^{(p-1)/p}
+		\end{align*}
+		Divide both sides by $E(||X+Y||^p)^{(p-1)/p}.$
+	\end{proof}
+\end{thm}
+
+\begin{thm}\label{thm:liapunovsineq}
+	\textbf{(Liapunov's Inequality)}\\
+	For any random $m \times n$ matrix $X$ and $1\le r\le p$,
+	\begin{align*}
+	(E||X||^r)^{1/r}\le (E||X||^p)^{1/p}
+	\end{align*}	
+	\begin{proof}
+		Note that function $g(u)=u^{p/r}$ is convex for $u>0$ since $p\ge r$. Let $u=||X||^r$ and apply Jensen's inequality.
+	\end{proof}
+\end{thm}
+
+\begin{thm}\label{thm:markoveineq}
+	\textbf{(Markov Inequality Standard Form)}\\
+	For any random vector $x$ and non-negative function $g(x)\ge 0$,
+	\begin{align*}
+	P(g(x)>\alpha)\le\frac{E(g(x))}{\alpha}
+	\end{align*}
+\end{thm}
+
+\begin{thm}\label{thm:markovineqstrong}
+	\textbf{(Markov Inequality Strong Form)}\\
+	For any random vector $x$ and non-negative function $g(x)\ge 0$,
+	\begin{align*}
+	P(g(x)>\alpha)\le\frac{E(g(x)1(g(x)>\alpha))}{\alpha}.
+	\end{align*}
+	
+	\begin{proof}
+		Let $F$ denote the distribution function of x. Then
+		\begin{align*}
+		P(g(x)\ge\alpha)&=\int_{\{g(u)\ge\alpha\}}dF(u)\\
+		&\le\int_{\{g(u)\ge\alpha\}}\frac{g(u)}{\alpha}dF(u)\\
+		&=\alpha^{-1}\int 1(g(u)>\alpha)g(u)dF(u)\\
+		&=\alpha^{-1} E(g(x)1(g(x)>\alpha))
+		\end{align*}
+		the inequality using the region of integration $\{g(u)>\alpha\}$. Since $1(g(x)>\alpha)\le 1$, the final expression is less than $\frac{E(g(x))}{\alpha}$, establishing the standard form.
+	\end{proof}
+\end{thm}
+
+\begin{thm}\label{thm:chebyshevineq}
+	\textbf{(Chebyshev's Inequality)}\\
+	For any random variable $x$,
+	\begin{align*}
+	P(|x-E(x)|>\alpha)\le\frac{Var(x)}{\alpha^2}
+	\end{align*}
+	
+	\begin{proof}
+		Define $y=(x-E(x))^2$ and note that $E(y)=Var(x)$. The events $\{|x-E(x)|>\alpha\}$ and $\{y>\alpha^2\}$ are equal, so by an application Markov's inequality we find
+		\begin{align*}
+		P(|x-E(x)|>\alpha)=P(y>\alpha^2)\le\alpha^{-2}E(y)=\frac{Var(x)}{\alpha^2}
+		\end{align*}
+	\end{proof}
+\end{thm}
+\clearpage
+
+\section{Instrumental Variable}
+
+
+
+\newpage
+\bibliographystyle{economet}
+\bibliography{econometrics}
+
+\end{document}

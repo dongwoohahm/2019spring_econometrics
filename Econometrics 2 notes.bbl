@@ -1,0 +1,29 @@
+\ifx\undefined\BySame
+\newcommand{\BySame}{\leavevmode\rule[.5ex]{3em}{.5pt}\ }
+\fi
+\ifx\undefined\textsc
+\newcommand{\textsc}[1]{{\sc #1}}
+\newcommand{\emph}[1]{{\em #1\/}}
+\let\tmpsmall\small
+\renewcommand{\small}{\tmpsmall\sc}
+\fi
+\begin{thebibliography}{}
+
+\harvarditem[Angrist and Pischke]{Angrist and Pischke}{2008}{mostlyharmless}
+\textsc{Angrist, J.~D.,  {\small and} J.-S. Pischke}  (2008): \emph{Mostly
+  harmless econometrics: An empiricist's companion}. Princeton university
+  press.
+
+\harvarditem[Cameron and Trivedi]{Cameron and Trivedi}{2005}{cameronandtrivedi}
+\textsc{Cameron, A.~C.,  {\small and} P.~K. Trivedi}  (2005):
+  \emph{Microeconometrics: methods and applications}. Cambridge university
+  press.
+
+\harvarditem[Hansen]{Hansen}{2018}{hanseneconometrics}
+\textsc{Hansen, B.~E.}  (2018): \emph{Econometrics}. University of Wisconsin.
+
+\harvarditem[Wooldridge]{Wooldridge}{2010}{wooldridgepanel}
+\textsc{Wooldridge, J.~M.}  (2010): \emph{Econometrics Analysis of Cross
+  Sections and Panel Data}. MIT press.
+
+\end{thebibliography}
