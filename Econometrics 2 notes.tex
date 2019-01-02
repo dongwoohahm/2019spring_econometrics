@@ -279,9 +279,19 @@ Instead, we typically use asymptotics to derive approximations to the distributi
 	for all $a\in\R$.
 \end{thm}
 
-\begin{rmk}
-	\textbf{(WLLN and CLT)}\\
-	By WLLN, $\bar{X}-\mu\plim 0$. In some sense with WLLN, $\bar{X}-\mu$ goes to 0 too fast as $\ninfty$. Thus by multiplying $\sqrt{n}$, the CLT slows down the speed of convergence to make it converge to some non degenerate distribution, i.e, $\sqrt{n}(\bar{X}-\mu)\dlim Z\sim N(0,\sigma^2)$.
+\begin{rmk}\leavevmode
+	\begin{itemize}
+		\item WLLN and CLT :\\
+		By WLLN, $\bar{X}-\mu\plim 0$. In some sense with WLLN, $\bar{X}-\mu$ goes to 0 too fast as $\ninfty$. Thus by multiplying $\sqrt{n}$, the CLT slows down the speed of convergence to make it converge to some non degenerate distribution, i.e, $\sqrt{n}(\bar{X}-\mu)\dlim Z\sim N(0,\sigma^2)$.
+		\item It is often useful to know if $Z\sim N(0,\sigma^2)$,
+		\begin{align*}
+		E(X^p)=\begin{cases}
+		0&\text{if }p\text{ is odd}\\
+		\sigma^p(p-1)!!&\text{if }p\text{ is even}
+		\end{cases}
+		\end{align*}
+		where $n!!=\prod_{k=0}^{\lceil\frac{n}{2}\rceil-1}(n-2k)=n(n-2)\cdots 1 $ is double factorial.
+	\end{itemize}
 \end{rmk}
 
 
@@ -328,7 +338,7 @@ Though Lindeberg-Levy CLT (Theorem \ref{thm:lindeberglevyclt}) only provides the
 
 \begin{thm}\label{thm:cramerwold}
 	\textbf{(Cramer-Wold)}	\\
-	Let $\hat{\gamma}_n,\gamma_{\infty}$ be vector-valued random vectors. Then $\hat{\gamma}_n\dlim \gamma_{\infty}$ if and only if $\lambda'\hat{\gamma}_n\dlim\lambda'\gamma_{\infty}$ for all fixed vectors $\lambda$ with $\lambda'\lambda=1$.
+	Let $\hat{\gamma}_n,\gamma_{\infty}$ be vector-valued random vectors. Then $\hat{\gamma}_n\dlim \gamma_{\infty}$ if and only if $\lambda'\hat{\gamma}_n\dlim\lambda'\gamma_{\infty}$ for all fixed vectors $\lambda$ with $\lambda'\lambda=1$.\footnote{The last condition that $\lambda'\lambda=1$ is often omitted in some versions, and it's not necessary.}
 \end{thm}
 
 %One implication of Cramer-Wold is that if $\{z_i \}_{i=1}^n$ is i.i.d with mean $\mu$ and variance $\Sigma$ then
@@ -359,6 +369,9 @@ Though Lindeberg-Levy CLT (Theorem \ref{thm:lindeberglevyclt}) only provides the
 		\end{align*}
 	\end{proof}
 \end{thm}
+\begin{rmk}
+	Note that having convergence in distribution to a normal distribution in each component does not imply the random vector jointly converge to joint normal. Hence for asymptotic ``joint" normality results, you should make use of multivariate CLT.\footnote{Recall Pepe's PS2 Q3, PS3 Q4?}
+\end{rmk}
 
 \subsubsection{Sufficient Conditions for Joint Weak Convergence}
 For probability limits, it is straightforward.
