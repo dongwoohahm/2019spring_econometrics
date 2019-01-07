@@ -179,7 +179,7 @@ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
 
 %%% The "real" document content comes below...
 
-\title{Introduction to Econometrics II\thanks{Columbia University Economics Ph.D. First Year 2018-2019. Professor Jushan Bai and Simon Lee. Mostly from Professors' lectures, \cite{hanseneconometrics}, \cite{cameronandtrivedi}, \cite{mostlyharmless}, \cite{wooldridgepanel},  and sometimes Professor Christoph Rothe's lecture notes.}} 
+\title{Introduction to Econometrics II\thanks{Columbia University Economics Ph.D. First Year 2018-2019. Professor Jushan Bai and Simon Lee. Mostly from Professors' lectures, \cite{hanseneconometrics}, \cite{cameronandtrivedi}, \cite{mostlyharmless}, \cite{wooldridgepanel},  and sometimes Paul Koh's note from last year and Professor Christoph Rothe's lecture notes from 2017 Spring.}} 
 \author{Dong Woo Hahm\thanks{Department of Economics, Columbia University. \href{mailto:dongwoo.hahm@columbia.edu}{dongwoo.hahm@columbia.edu}. \\Please email me for any error. This note will be continuously updated throughout the semester. Please do not circulate outside of the class.}}
 \date{Spring 2019} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
@@ -422,13 +422,13 @@ Continuous Mapping theorem and Slutsky's theorem tell us how to manipulate limit
 	\end{enumerate}
 \end{thm}
 
-Delta method is another way of approximating the distribution of ``smooth" transformations of simpler objects.\footnote{The method used in proof of Delta method using Taylor expansion is extremely useful in econometrics. We will get to see this later in course for example in proving asymptotic normality of any type of extremum estimators, LM tests, or LR tests.}
+Delta method is another way of approximating the distribution of ``smooth" transformations of simpler objects.%\footnote{The method used in proof of Delta method using Taylor expansion is extremely useful in econometrics. We will get to see this later in course for example in proving asymptotic normality of any type of extremum estimators, LM tests, or LR tests.}
 
 \begin{thm}\label{thm:deltamethod}
 	\textbf{(Delta Method)}\\
 	Suppose that $\sqrt{n}(\hat{\theta}_n-\theta_0)\dlim\xi\in\R ^m$ where $g:\R^m\rightarrow\R^k,k\le m$ is continuously differentiable at $x=\theta_0$. Then $\sqrt{n}(g(\hat{\theta}_n)-g(\theta_0))\dlim G^T\xi$ where $G=(g'(\theta_0))^T$, the transpose of Jacobian matrix of $g$ evaluated at $\theta_0$.
 	\begin{proof}
-		Prove only for the case $k=1$.\\
+		Prove only for the case $m=k=1$.\\
 		$g(x)=g(\theta_0)+g'(\bar{x})(x-\theta_0)$ where $\bar{x}$ is in between $x$ and $\theta_0$.\\
 		Replace $x=\hat{\theta}_n$ then $g(\hat{\theta}_n)=g(\theta_0)+g'(\bar{\theta}_n)(\hat{\theta}_n-\theta_0)$ where $\bar{\theta}_n$ is in between $\hat{\theta}_n$ and $\theta_0$. Thus,
 		\begin{align*}
@@ -469,58 +469,58 @@ Delta method is another way of approximating the distribution of ``smooth" trans
 \end{defn}
 
 
-\begin{ex} For any consistent estimator $\hat{\beta}$ for $\beta$, $\hat{\beta}=\beta+o_p(1)$.
-%	\begin{itemize}
-%		\item For any consistent estimator $\hat{\beta}$ for $\beta$, $\hat{\beta}=\beta+o_p(1)$.
-%		\item For plug-in estimators $\hat{\beta}$ for $\beta$, $\hat{\beta}=\beta+O_p(n^{-1/2}).$
-%	\end{itemize}
+\begin{ex} \leavevmode
+	\begin{itemize}
+		\item For any consistent estimator $\hat{\beta}$ for $\beta$, $\hat{\beta}=\beta+o_p(1)$.
+		\item For $\bhat$ such that $\sqrt{n}(\bhat-\beta)\dlim N(\cdot,\cdot)$, $\hat{\beta}=\beta+O_p(n^{-1/2}).$
+	\end{itemize}
 \end{ex}
 
-%\begin{rmk}
-%	\textbf{(Some Properties of Stochastic Orders)}
-%	\begin{enumerate}
-%		\item $z_n=O_p(a_n)\Rightarrow z_n=o_p(b_n)$ for any $b_n$ such that $a_n/b_n\rightarrow 0$.
-%		\item $z_n=o_p(1)\Rightarrow z_n=O_p(1)$
-%		\item $z_n=o_p(1)\nLeftarrow z_n=O_p(1)$
-%		\item $z_n\plim z \Rightarrow z_n=O_p(1)$
-%		\begin{proof}
-%			Fix $\epsilon>0.$
-%			\begin{itemize}
-%				\item $\exists M(\epsilon)>0$ s.t. $P(|z|>\frac{M(\epsilon)}{2})<\frac{\epsilon}{2}$ since $P(|z|>t)=F_z(-t)+(1-F_z(t))\rightarrow 0$.
-%				\item Since $z_n\plim z$, $\lim_n P(|z_n-z|>\frac{M(\epsilon)}{2})<\frac{\epsilon}{2}$. Thus $\exists N\in\N, n>N\Rightarrow P(|z_n-z|>\frac{M(\epsilon)}{2})<\frac{\epsilon}{2}$.
-%				\item For $n\le N$, $\exists M_n>0$ s.t. $P(|z_n|>M_n)<\epsilon$
-%				\item Let $M_{\epsilon}=\max\{M_1,\cdots,M_N,M(\epsilon) \}$
-%				\item If $n\le N$, $P(|z_N|>M_{\epsilon})\le P(|z_N|>M_n)<\epsilon$\\
-%				If $n>N$,
-%				\begin{align*}
-%				P(|z_n|>M_{\epsilon})&\le P(|z_n-z|+|z|>M_{\epsilon})\\
-%				&\le P(|z_n-z|>\frac{M_{\epsilon}}{2})+P(|z|>\frac{M_{\epsilon}}{2})\\
-%				&\le P(|z_n-z|>\frac{M(\epsilon)}{2})+P(|z|>\frac{M(\epsilon)}{2})\\
-%				&<\epsilon
-%				\end{align*}
-%			\end{itemize}
-%		\end{proof}
-%		\item $z_n\dlim z \Rightarrow z_n=O_p(1)$
+\begin{rmk}
+	\textbf{(Some Properties of Stochastic Orders)}
+	\begin{enumerate}
+		\item $z_n=O_p(a_n)\Rightarrow z_n=o_p(b_n)$ for any $b_n$ such that $a_n/b_n\rightarrow 0$.
+		\item $z_n=o_p(1)\Rightarrow z_n=O_p(1)$
+		\item $z_n=o_p(1)\nLeftarrow z_n=O_p(1)$
+		\item $z_n\plim z \Rightarrow z_n=O_p(1)$
+		\begin{proof}
+			Fix $\epsilon>0.$
+			\begin{itemize}
+				\item $\exists M(\epsilon)>0$ s.t. $P(|z|>\frac{M(\epsilon)}{2})<\frac{\epsilon}{2}$ since $P(|z|>t)=F_z(-t)+(1-F_z(t))\rightarrow 0$.
+				\item Since $z_n\plim z$, $\lim_n P(|z_n-z|>\frac{M(\epsilon)}{2})<\frac{\epsilon}{2}$. Thus $\exists N\in\N, n>N\Rightarrow P(|z_n-z|>\frac{M(\epsilon)}{2})<\frac{\epsilon}{2}$.
+				\item For $n\le N$, $\exists M_n>0$ s.t. $P(|z_n|>M_n)<\epsilon$
+				\item Let $M_{\epsilon}=\max\{M_1,\cdots,M_N,M(\epsilon) \}$
+				\item If $n\le N$, $P(|z_N|>M_{\epsilon})\le P(|z_N|>M_n)<\epsilon$\\
+				If $n>N$,
+				\begin{align*}
+				P(|z_n|>M_{\epsilon})&\le P(|z_n-z|+|z|>M_{\epsilon})\\
+				&\le P(|z_n-z|>\frac{M_{\epsilon}}{2})+P(|z|>\frac{M_{\epsilon}}{2})\\
+				&\le P(|z_n-z|>\frac{M(\epsilon)}{2})+P(|z|>\frac{M(\epsilon)}{2})\\
+				&<\epsilon
+				\end{align*}
+			\end{itemize}
+		\end{proof}
+		\item $z_n\dlim z \Rightarrow z_n=O_p(1)$
 %		\begin{proof}
 %			(Prohorov's)\\
 %			Fix $M$ s.t. $P(|z|\ge M)<\epsilon$. By Portmanteau lemma, $P(||z_n||\ge M)$ exceeds $P(||z||\ge M)$ arbitarily little for sufficiently large $n$. Thus $\exists N$ s.t. $P(||z_n||\ge M)<2\epsilon,\forall n\ge N$. Because each of the finitely many variables $z_n$ with $n<N$ is tight, the value of $M$ can be increased to ensure that $P(||z_n||\ge M)<2\epsilon,\forall n$.
 %		\end{proof}
-%		\item If $E(|z_n|)\le c<+\infty,\forall n$, then $z_n=O_p(1)$
-%		\begin{proof}
-%			Use Markov inequality. Let $\epsilon>0$. Then there exists $M(\epsilon)$ such that $\frac{c}{M(\epsilon)}<\epsilon$. Then for each $n\in\N,P(|z_n|>M(\epsilon))\le \frac{E(|z_n|)}{M(\epsilon)}\le \frac{c}{M(\epsilon)}<\epsilon$.
-%		\end{proof}
-%		\item If $z_n=O_p(1), a_n\rightarrow\infty$ then $\frac{z_n}{a_n}=o_p(1)$.
-%		\begin{proof}
-%			$\exists M_{\delta}>0$ s.t. $P(|z_n|>M_{\delta})<\delta,\forall n$. Fix $\epsilon>0$ then
-%			\begin{align*}
-%			P(|z_n/a_n|>\epsilon)&=P(|z_n/a_n|>\epsilon,|z_n|>M_{\delta})+P(|z_n/a_n|>\epsilon,|z_n|\le M_{\delta})\\
-%			&\le P(|z_n|>M_{\delta})+P(|M_{\delta}/a_n|>\epsilon)\\
-%			&<\delta
-%			\end{align*}
-%			as $\ninfty$ and since $\delta$ arbitarily chosen, we're done.
-%		\end{proof}
-%	\end{enumerate}
-%\end{rmk}
+		\item If $E(|z_n|)\le c<+\infty,\forall n$, then $z_n=O_p(1)$
+		\begin{proof}
+			Use Markov inequality. Let $\epsilon>0$. Then there exists $M(\epsilon)$ such that $\frac{c}{M(\epsilon)}<\epsilon$. Then for each $n\in\N,P(|z_n|>M(\epsilon))\le \frac{E(|z_n|)}{M(\epsilon)}\le \frac{c}{M(\epsilon)}<\epsilon$.
+		\end{proof}
+		\item If $z_n=O_p(1), a_n\rightarrow\infty$ then $\frac{z_n}{a_n}=o_p(1)$.
+		\begin{proof}
+			$\exists M_{\delta}>0$ s.t. $P(|z_n|>M_{\delta})<\delta,\forall n$. Fix $\epsilon>0$ then
+			\begin{align*}
+			P(|z_n/a_n|>\epsilon)&=P(|z_n/a_n|>\epsilon,|z_n|>M_{\delta})+P(|z_n/a_n|>\epsilon,|z_n|\le M_{\delta})\\
+			&\le P(|z_n|>M_{\delta})+P(|M_{\delta}/a_n|>\epsilon)\\
+			&<\delta
+			\end{align*}
+			as $\ninfty$ and since $\delta$ arbitarily chosen, we're done.
+		\end{proof}
+	\end{enumerate}
+\end{rmk}
 
 \begin{thm}
 	\textbf{(Random Sequence with a Bounded Moment is Stochastically Bounded)}\\
@@ -542,7 +542,7 @@ Delta method is another way of approximating the distribution of ``smooth" trans
 	\end{proof}
 \end{thm}
 
-\begin{thm}
+\begin{thm}\label{thm:simplerulesforstochasticorders}
 	\textbf{(Simple Rules for Stochastic Orders)}
 	\begin{enumerate}
 		\item $o_p(1)+o_p(1)=o_p(1)$
@@ -578,6 +578,16 @@ Delta method is another way of approximating the distribution of ``smooth" trans
 		\end{itemize}
 	\end{proof}
 \end{thm}
+\begin{ex}
+	\textbf{(Example of using Theorem \ref{thm:simplerulesforstochasticorders})}\\
+	$\sqrt{n}(\bhat-\beta)\dlim N(0,1)$ implies $\bhat=\beta+o_p(1)$ so that $\bhat$ is a consistent estimator of $\beta$.
+	\begin{proof}
+		\begin{align*}
+		\bhat-\beta=\frac{1}{\sqrt{n}}\cdot\sqrt{n}(\bhat-\beta)=\frac{1}{\sqrt{n}}\cdot O_p(1)=o_p(1)\cdot O_p(1)=o_p(1)
+		\end{align*}
+	\end{proof}
+\end{ex}
+
 
 \subsection{Inequalities\footnote{In this subsection I restate a number of useful equalities and their proofs from Hansen's textbook. You don't have to know the proofs unless you are interested in.}}
 \begin{thm}\label{thm:jensensineq}
@@ -738,6 +748,245 @@ Delta method is another way of approximating the distribution of ``smooth" trans
 \clearpage
 
 \section{Instrumental Variable}
+\subsection{Endogeneity}
+Consider a linear model
+\begin{align}\label{eqn:IVstructural}
+y_i=x_i'\beta+e_i
+\end{align}
+Among others, the key assumption for consistency of $\bhat$ was $E(x_ie_i)=0$ since
+\begin{align*}
+\bhat&\plim E(x_ix_i')^{-1}E(x_iy_i)\\
+     &= \beta+\underbrace{E(x_ix_i')^{-1}E(x_ie_i)}_{\text{endogeneity bias if }E(x_ie_i)\neq0}
+\end{align*}
+We call there is an endogeneity in the linear model if $E(x_ie_i)=0$ is violated.
+
+\begin{defn}
+	\textbf{(Endogeneity)}\\
+	In a linear model $y_i=x_i'\beta+e_i$, we say that there is \textbf{endogeneity} in the linear model if $\beta$ is the parameter of interest and
+	\begin{align*}
+	E(x_ie_i)\neq 0
+	\end{align*}
+	It is typical to say that $x_i$ is endogenous for $\beta$.
+\end{defn}
+
+It turns out that for endogeneity, $\beta_0$ must describe more than just linear projection or conditional expectation. For example, suppose given i.i.d. data $\{y_i,x_i\}_{i=1}^n$, define
+\begin{align*}
+\beta^*&=E(x_ix_i')^{-1}E(x_iy_i)\\
+u_i^*&=y_i-x_i'\beta^*
+\end{align*}
+So that $\beta^*$ is the linear projection coefficient and $u_i^*$ is the linear projection error. Then it is clear that
+\begin{align*}
+y_i=x_i'\beta^*+u_i^*\text{ with }E(u_i^*x_i)=0
+\end{align*}
+But still, 
+\begin{align*}
+\beta^*&=E(x_ix_i')^{-1}E(x_iy_i)\\
+   	   &=E(x_ix_i')^{-1}E(x_i(x_i'\beta+e_i))\\
+   	   &=\beta+E(x_ix_i)^{-1}E(x_ie_i)
+\end{align*}
+and it is not equal to $\beta$ if endogeneity is present.
+
+As another example, suppose given i.i.d. data $\{y_i,x_i\}_{i=1}^n$, define
+\begin{align*}
+E(y_i|x_i)&=x_i'\beta^*\\
+u_i^*&=y_i-x_i'\beta^*
+\end{align*}
+then it is clear that
+\begin{align*}
+y_i=x_i'\beta^*+u_i^*\text{ with }E(u_i^*|x_i)=0
+\end{align*}
+and $E(u_i^*x_i)=E(E(u_i^*x_i|x_i))=E(E(u_i^*|x_i)x_i)=0$.
+
+Hence to distinguish Equation (\ref{eqn:IVstructural}) from linear projection or conditional models, we call Equation (\ref{eqn:IVstructural}) a \textbf{structural equation} and $\beta$ a \textbf{structural parameter}.
+
+In most cases, $\beta_0$ in a model with endogeneity is an interpretable parameter in an idealized model that cannot be estimated due to practical limitations. 
+
+\subsection{Sources of Endogeneity}
+Three major examples of sources of endogeneity are omitted variable bias, measurement error and simultaneous equations.
+
+\subsubsection{Omitted Variable Bias\footnote{Though it is a convention to write as omitted variable ``bias", one should be aware that the bias here is an asymptotic concept.}}
+Suppose that we want to estimate the linear model
+\begin{align*}
+y_i=x_i'\beta+w_i'\delta+e_i\text{ with }E(e_i(x_i',w_i')')=0
+\end{align*}
+However, we do not observe $(y_i,x_i,w_i)$ but only $(y_i,x_i)$. That is, by defining
+\begin{align*}
+u_i=w_i'\delta+e_i
+\end{align*}
+we can only at best estimate the model
+\begin{align*}
+y_i=x_i'\beta+u_i
+\end{align*}
+Then there is endogeneity of $x_i$ for $\beta$ if $x_i$ and $w_i$ are correlated and $\delta\neq0$ since
+\begin{align*}
+E(x_iu_i)=E(x_iw_i')\delta\neq0
+\end{align*}
+If $x_i$ and $w_i$ are uncorrelated, basically we cannot distinguish between $w_i$ and $e_i$ so there is no problem. 
+
+As a consequence, the probability limit of the OLS estimator that only uses $\{y_i,x_i\}_{i=1}^n$ is 
+\begin{align*}
+\beta^*&=\beta+E(x_ix_i')^{-1}E(x_iw_i')\delta\\
+&\neq \beta
+\end{align*}
+so the OLS estimator is inconsistent. 
+
+The direction of the (asymptotic) bias depends on the sign of $E(x_iw_i')$ and $\delta$, which we can guess in some applications. If $E(x_iw_i')\delta$ is positive, we call that $\bhat$ is \textbf{over-estimated} and if $E(x_iw_i')\delta$ is negative, we call that $\bhat$ is \textbf{under-estimated}. 
+Especially in the case where parameter estimates are to be given a causal interpretation, controlling for omitted variables bias is necessary. Since too many regressors cause little harm, but too few regressors can lead to inconsistency, microeconometric models estimated from large data sets tend to include many regressors.
+
+\begin{ex}\label{ex:ovbexample}
+	Suppose wage $y_i$ is determined by education $x_i$ and unobserved ability $w_i$ as $y_i=x_i\beta+w_i\delta+e_i,E(e_i(x_i,w_i)')=0$ but at best we can only estimate the model $y_i=x_i\beta+u_i$. If wages are affected by unobserved ability ($\delta\neq0$) and individuals with high ability self-select into higher education ($E(x_iw_i')\neq0$) then the error term contains unobserved ability ($u_i=w_i\delta+e_i$) so education and error will be positively correlated ($E(u_ix_i)\neq0$). Hence we have education $x_i$ endogenous for $\beta$ and th e linear projection coefficient will be upward biased relative to the structural coefficient $\beta$.
+\end{ex}
+
+\begin{rmk}
+	\textbf{(Inclusion of Irrelevant Regressors)}\\Related form of misspecification is inclusion of irrelevant regressors. In this case it is straightforward to show that OLS is consistent, but there is a loss of efficiency. 
+\end{rmk}
+
+\subsubsection{Measurement Error}
+Suppose that we want to estimate the linear model
+\begin{align*}
+y_i=x_i^{*\prime}\beta+e_i\text{ with }E(e_i x_i^*)=0
+\end{align*}
+However, we do not observe $x_i^*$ but only $x_i=x_i^*+v_i$ with $v_i$ a mean zero measurement error that is independent of $x_i^*$ and $e_i$. This case is known as \textbf{classical measurement error}, which means $x_i$ is a noisy but unbiased measure of $z_i$.
+
+Define $u_i=e_i-v_i'\beta$, we find that
+\begin{align*}
+y_i&=x_i^{*\prime}\beta+e_i\\
+&=(x_i-v_i)'\beta+e_i\\
+&=x_i'\beta+u_i
+\end{align*}
+Then there is endogeneity of $x_i$ for $\beta$ because
+\begin{align*}
+E(x_iu_i)=E((x_i^*+v_i)(e_i-v_i'\beta_0))=-E(v_iv_i')\beta\neq 0
+\end{align*}
+in general.
+
+As a consequence, the probability limit of the OLS estimator that uses only $\{y_i,x_i\}_{i=1}^n$ is
+\begin{align*}
+\beta^* &=\beta-E(x_ix_i')^{-1}E(v_iv_i')\beta\\
+&=\beta-[E(x_i^*x_i^{* \prime}) +E(v_iv_i')]^{-1}E(v_iv_i^{\prime})\beta\tag*{: $x_i^*,v_i$ independent}\\
+&=[E(x_i^*x_i^{*\prime})+E(v_iv_i')]^{-1}E(x_i^*x_i^{*\prime})\beta
+\end{align*}
+So OLS estimator is again inconsistent. Suppose that $x_i$ and $x_i^*$ are both scalar random variables. Then we find the probability limit of OLS estimator as
+\begin{align*}
+\underbrace{\frac{E(x_i^*x_i^{*\prime})}{E(x_i^*x_i^{*\prime})+E(v_iv_i')}}_{\in(0,1)}\beta
+\end{align*}
+hence the it shrinks the structural parameter $\beta$ towards zero. This is called \textbf{measurement error bias} or \textbf{attenuation bias}.
+
+\begin{rmk}\leavevmode
+	\begin{itemize}
+		\item Note that additive measurement error in dependent variable $y_i$ with all assumptions above is not a problem since the measurment error just adds to the error $e_i$.
+		\item If we have one more variable which is a noisy measure of $x_i^*$, say $w_i=x_i^*+\eta_i$, we can use as an instrument for $x_i$.
+	\end{itemize}
+\end{rmk}
+
+\subsubsection{Simultaneous Equations}
+Consider a simple linear supply-and-demand system:
+\begin{align*}
+q_i&=-\beta p_i+e_{1i}\tag*{: demand}\\
+q_i&=\beta p_i+e_{2i}\tag*{: supply}
+\end{align*}
+Assume that $e_i=\begin{pmatrix}e_{1i}\\e_{2i}\end{pmatrix}$ is i.i.d., $E(e_i)=0$ and $E(e_ie_i')=I_2$\footnote{$I_k$ is an identity matrix of dimension $k$.} for simplicity.
+
+Simple algebra shows that in equilibrium,
+\begin{align*}
+\begin{bmatrix}1&\beta_1\\1 &-\beta_2\end{bmatrix}\begin{pmatrix}q_i\\p_i\end{pmatrix}=\begin{pmatrix}e_{1i}\\e_{2i}\end{pmatrix}
+\end{align*}
+and hence
+\begin{align*}
+\begin{pmatrix}q_i\\p_i\end{pmatrix}&=\begin{bmatrix}1&\beta_1\\1 &-\beta_2\end{bmatrix}^{-1}\begin{pmatrix}e_{1i}\\e_{2i}\end{pmatrix}\\
+&=\begin{pmatrix}
+\frac{\beta_2 e_{1i}+\beta_1 e_{2i}}{\beta_1+\beta_2}\\
+\frac{e_{1i}-e_{2i}}{\beta_1+\beta_2}
+\end{pmatrix}
+\end{align*}
+Hence, in both demand and supply equations the regressor $p_i$ is correlated with the errors
+\begin{align*}
+E(p_ie_{1i})&\neq0\\
+E(p_ie_{2i})&\neq0
+\end{align*}
+and hence we have endogeneity of $p_i$ for both $\beta_1$ and $\beta_2$. 
+The projection of $q_i$ on $p_i$ yields
+\begin{align*}
+q_i&=\beta^* p_i+e_i^*\\
+E(p_ie_i^*)*&=0
+\end{align*}
+where
+\begin{align*}
+\beta^*=\frac{E(p_iq_i)}{E(p_i^2)}=\frac{\beta_2-\beta_1}{2}
+\end{align*}
+and hence the OLS estimate $\bhat\plim \beta^*$ and it does not equal either $\beta_1$ and $\beta_2$. This is called the \textbf{simultaneous equations bias}. In general, when both the dependent variable and independent variable are simultaneously determined then they should be treated as endogenous.
+
+
+\subsection{Instrumental Variables}
+Again consider a linear model with endogeneity:
+\begin{align*}
+y_i=x_i'\beta+e_i\text{ with }E(e_ix_i)\neq 0
+\end{align*}
+How can we identify and estimate $\beta$? An obvious way is through a randomized experiment, but for most economics applications such experiments are too expensive or even impossible. One popular approach is through the use of so-called instruments or instrumental variables (IV). This is to generate only \textit{exogenous} variation in $x$. 
+
+In most applications we only treat a subset of the regressors as endogenous; most of the regressors will be treated as exogenous, meaning that they are assumed uncorrelated with the equation error. To be specific, we make the partition
+
+\begin{align*}
+x_i=\begin{pmatrix}x_{1i}\\x_{2i}\end{pmatrix}\begin{matrix}k_1\\k_2\end{matrix}
+\end{align*}
+and similarly
+\begin{align*}
+\beta=\begin{pmatrix}\beta_{1}\\\beta_{2}\end{pmatrix}\begin{matrix}k_1\\k_2\end{matrix}
+\end{align*}
+and assume 
+\begin{align*}
+E(x_{1i}e_i)&=0\\
+E(x_{2i}e_i)&\neq0
+\end{align*}
+where $k_1+k_2=k$ and so that $x_{1i}$ is \textbf{exogenous} and $x_{2i}$ is \textbf{endogenous} for the structural parameter $\beta$. The \textbf{structural equation} is
+\begin{align*}
+y_i&=x_i'\beta+e_i\\
+   &=x_{1i}'\beta_1+x_{2i}'\beta_2+e_i
+\end{align*}
+or equivalently using matrix notation,
+\begin{align*}
+y&=X\beta+e\\
+ &=X_1\beta+X_2\beta_2+e
+\end{align*}
+
+To consistently estimate $\beta$, we require additional information. One type of information which is commonly used in economic applications are what we call instruments.
+
+\begin{defn}
+	\textbf{(Instrumental Variables)}\\
+	An $l$-vector $z_i$ is a vector of IVs for $x_i$ in a regression of the form
+	\begin{align*}
+	y_i=x_i'\beta+e_i
+	\end{align*}
+	if it satisfies
+	\begin{enumerate}
+		\item Exogeneity : $E(z_iu_0)=0$
+		\item Relevance : $rank(E(z_ix_i'))=k$
+		\item $E(z_iz_i')>0$
+	\end{enumerate}
+\end{defn}
+
+Roughly speaking, instrument $z_i$ should be correlated with $x_i$ and uncorrelated with $u_i$. Exogeneity condition\footnote{Exogenous variables mean they are determined outside of the model for $y_i$.} requires the instruments are uncorrelated with the regression error, and the relevance condition is essential for the identification of the model and a necessary condition follows, $l\ge k$. Third one is a normalization which excludes linearly redundant instruments.
+
+Note that even if $E(x_ie_i)\neq0$, $x_{1i}$ is still uncorrelated with $e_i$ (for example, the intercept) and they should be included as instrumental variables, as a subset of variables $z_i$. Hence,
+\begin{align*}
+z_i=\begin{pmatrix}z_{1i}\\z_{2i}\end{pmatrix}=\begin{pmatrix}x_{1i}\\z_{2i}\end{pmatrix}=\begin{matrix}k_1\\l_2\end{matrix}
+\end{align*}
+where $k_1+l_2=l$. 
+
+Many authors simply label $x_{1i}$ as the ``exogenous variables", $x_{2i}$ as the ``endogenous variables" and $z_{2i}$ as the ``instrumental variables".
+
+\begin{ex}
+	\textbf{(Example \ref{ex:ovbexample} Continued)}\\
+	An ideal instrument affects the choice of the regressor	(education) but does not directly influence the dependent variable (wages) except through the
+	indirect effect on the regressor. \cite{card1993NBER} suggested if a potential student lives close to a college, this reduces the cost of attendence and thereby raises the likelihood that the student will attend college (increase education, `relevance'). However, college proximity does not directly affect a students skills or abilities, so should not have a direct effect on his or her market wage (`exogenous'). In this case college proximity can be used as instrument for education.
+\end{ex}
+
+\begin{defn}
+	\textbf{(Identification)}\\
+	In a model with instruments, we call the model is \textbf{just-identified} if $l=k$ (i.e., $l_2=k_2$) and is \textbf{over-identified} if $l>k$ (i.e., $l_2>k_2$). If $l<k$, the model is unidentified.
+\end{defn}
+
+\subsection{Reduced Form}
 
 
 

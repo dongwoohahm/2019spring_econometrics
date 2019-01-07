@@ -25,45 +25,45 @@ Name 1 in "Cameron, A. Colin, and Pravin K. Trivedi" has a comma at the end for 
 while executing---line 1283 of file economet.bst
 Warning--can't use both author and editor fields in hanseneconometrics
 Done.
-You've used 4 entries,
+You've used 5 entries,
             2327 wiz_defined-function locations,
-            534 strings with 4067 characters,
-and the built_in function-call counts, 1625 in all, are:
-= -- 148
-> -- 85
+            540 strings with 4213 characters,
+and the built_in function-call counts, 1986 in all, are:
+= -- 184
+> -- 100
 < -- 0
-+ -- 27
-- -- 24
-* -- 123
-:= -- 336
-add.period$ -- 8
-call.type$ -- 4
-change.case$ -- 22
-chr.to.int$ -- 4
-cite$ -- 5
-duplicate$ -- 68
-empty$ -- 105
-format.name$ -- 30
-if$ -- 306
++ -- 32
+- -- 28
+* -- 150
+:= -- 413
+add.period$ -- 9
+call.type$ -- 5
+change.case$ -- 27
+chr.to.int$ -- 5
+cite$ -- 6
+duplicate$ -- 84
+empty$ -- 128
+format.name$ -- 36
+if$ -- 373
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 8
-newline$ -- 24
-num.names$ -- 24
-pop$ -- 33
+missing$ -- 9
+newline$ -- 27
+num.names$ -- 30
+pop$ -- 38
 preamble$ -- 1
-purify$ -- 22
+purify$ -- 27
 quote$ -- 0
-skip$ -- 57
+skip$ -- 72
 stack$ -- 0
-substring$ -- 44
-swap$ -- 9
+substring$ -- 55
+swap$ -- 12
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 32
+type$ -- 43
 warning$ -- 1
-while$ -- 18
+while$ -- 23
 width$ -- 0
-write$ -- 55
+write$ -- 66
 (There were 10 error messages)

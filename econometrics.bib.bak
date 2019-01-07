@@ -22,7 +22,7 @@
   author    = {Angrist, Joshua D., and Jörn-Steffen Pischke},
 }
 
-@Book{,
+@Book{wooldridgepanel,
   title     = {Econometrics Analysis of Cross Sections and Panel Data},
   publisher = {MIT press},
   year      = {2010},
